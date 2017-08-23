@@ -22,6 +22,7 @@ Accessible SSH port: 2200
 4. In order to prevent the "sudo: unable to resolve host" error, edit the hosts:
 `$ sudo nano /etc/hosts`.
 - Add the host: 127.0.1.1 ip-10-20-37-65.
+
 **Source: iliketomatoes' README.md**
 
 ### Update all currently installed packages
@@ -31,10 +32,12 @@ $ sudo apt-get update.
 $ sudo apt-get upgrade.
 ```
 2. Install finger, a utility software to check users' status: `$ apt-get install finger`.
+
 **Source: Udacity Lessons**
 
 ### Configure the local timezone to UTC
 1. Open time configuration dialog and set it to UTC with: `$ sudo dpkg-reconfigure tzdata`.
+
 **Source rrjoson's README.md**
 
 ### Configure the key-based authentication for grader user
@@ -52,11 +55,13 @@ Now you are able to log into the remote VM through ssh with the following comman
 ### Enforce key-based authentication
 1. `$ sudo nano /etc/ssh/sshd_config`. Find the PasswordAuthentication line and edit it to `no`.
 2. `$ sudo service ssh restart`.
+
 **Source: Udacity Lessons**
 
 ### Change the SSH port from 22 to 2200
 1. `$ sudo nano /etc/ssh/sshd_config`. Find the Port line and edit it to 2200.
 2. `$ sudo service ssh restart`.
+
 **Source: Udacity Lessons**
 
 #### *Important*
@@ -68,6 +73,7 @@ Now you are able to log into the remote VM through ssh with the following comman
 ### Disable ssh login for root user
 1. `$ sudo nano /etc/ssh/sshd_config`. Find the PermitRootLogin line and edit it to no.
 2. `$ sudo service ssh restart`.
+
 **Source: Udacity Lessons**
 
 ### Configure the Uncomplicated Firewall (UFW)
@@ -83,6 +89,7 @@ $ sudo ufw enable.
 ### Configure cron scripts to automatically manage package updates
 1. Install unattended-upgrades if not already installed: `$ sudo apt-get install unattended-upgrades`.
 2. To enable it, do: `$ sudo dpkg-reconfigure --priority=low unattended-upgrades`.
+
 **Source: rrjoson's README.md**
 
 ### Install Apache, mod_wsgi
@@ -90,6 +97,7 @@ $ sudo ufw enable.
 2. Install mod_wsgi with the following command: `$ sudo apt-get install libapache2-mod-wsgi python-dev`.
 3. Enable mod_wsgi: `$ sudo a2enmod wsgi`.
 4. `$ sudo service apache2 start`.
+
 **Sources: Udacity Lessons and iliketomatoes' README.md**
 
 ### Clone the Catalog app from Github
@@ -105,6 +113,7 @@ sys.path.insert(0, "/var/www/catalog/")
 
 from catalog import app as application
 ```
+
 **Source: iliketomatoes' README.md**
 
 ### Install virtual environment, Flask and the project's dependencies
@@ -151,6 +160,7 @@ from catalog import app as application
 </VirtualHost>
 ```
 3. Enable the new virtual host: `$ sudo a2ensite catalog`.
+
 **Source: iliketomatoes' README.md**
 
 ### Install and configure PostgreSQL
@@ -175,6 +185,7 @@ local   all             all                                     peer
 host    all             all             127.0.0.1/32            md5
 host    all             all             ::1/128                 md5
 ```
+
 **Source: iliketomatoes' README.md**
 
 ### Update OAuth authorized JavaScript origins
