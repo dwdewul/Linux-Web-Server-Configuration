@@ -154,7 +154,7 @@ from catalog import app as application
 11. Inside the Flask application, the database connection is now performed with:
 `engine = create_engine('postgresql://catalog:password@localhost/catalog')`
 12. Setup the database with: `$ python /var/www/catalog/catalog/db_setup.py`.
-13. To prevent potential attacks from the outer world we double check that no remote connections to the database are allowed. Open the following file: `$ sudo nano /etc/postgresql/9.3/main/pg_hba.conf` and edit it, if necessary, to make it look like this:
+13. To prevent potential attacks check that no remote connections to the database are allowed. Open the following file: `$ sudo nano /etc/postgresql/9.3/main/pg_hba.conf` and edit it, if necessary, to make it look like this:
 ```
 local   all             postgres                                peer
 local   all             all                                     peer
