@@ -119,7 +119,6 @@ from catalog import app as application
 ```xml
 <VirtualHost *:80>
     ServerName 13.59.199.35
-    ServerAlias ec2-52-34-208-247.us-east-2.compute.amazonaws.com
     ServerAdmin admin@13.59.199.35
     WSGIDaemonProcess catalog python-path=/var/www/catalog:/var/www/catalog/venv/lib/python2.7/site-packages
     WSGIProcessGroup catalog
