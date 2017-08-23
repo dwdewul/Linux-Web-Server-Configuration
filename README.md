@@ -18,9 +18,11 @@ Accessible SSH port: 2200
 1. Log into the remote VM as root user through ssh: `$ ssh root@13.59.199.35`.
 2. Add a new user called grader: `$ sudo adduser grader`.
 3. Create a new file under the suoders directory: `$ sudo nano /etc/sudoers.d/grader`. Fill that newly created file with the following line of text: "grader ALL=(ALL:ALL) ALL", then save it.
+**Source: Udacity Lessons**
 4. In order to prevent the "sudo: unable to resolve host" error, edit the hosts:
 `$ sudo nano /etc/hosts`.
 - Add the host: 127.0.1.1 ip-10-20-37-65.
+**Source: iliketomatoes' README.md**
 
 ### Update all currently installed packages
 1.
@@ -29,9 +31,11 @@ $ sudo apt-get update.
 $ sudo apt-get upgrade.
 ```
 2. Install finger, a utility software to check users' status: `$ apt-get install finger`.
+**Source: Udacity Lessons**
 
 ### Configure the local timezone to UTC
 1. Open time configuration dialog and set it to UTC with: `$ sudo dpkg-reconfigure tzdata`.
+**Source rrjoson's README.md**
 
 ### Configure the key-based authentication for grader user
 1. Generate an encryption key on your local machine with: `$ ssh-keygen ~/.ssh/udacity`.
@@ -43,13 +47,17 @@ $ sudo apt-get upgrade.
 5. Finally change the owner from root to grader: `$ sudo chown -R grader:grader /home/grader/.ssh`.
 Now you are able to log into the remote VM through ssh with the following command: `$ ssh -i ~/.ssh/udacity_key.rsa grader@13.59.199.35`.
 
+**Source: Udacity Lessons**
+
 ### Enforce key-based authentication
 1. `$ sudo nano /etc/ssh/sshd_config`. Find the PasswordAuthentication line and edit it to `no`.
 2. `$ sudo service ssh restart`.
+**Source: Udacity Lessons**
 
 ### Change the SSH port from 22 to 2200
 1. `$ sudo nano /etc/ssh/sshd_config`. Find the Port line and edit it to 2200.
 2. `$ sudo service ssh restart`.
+**Source: Udacity Lessons**
 
 #### *Important*
 Be sure to add the port 2200 to your AWS server via your AWS homepage under the "Networking" tab.
@@ -60,6 +68,7 @@ Now you are able to log into the remote VM through ssh with the following comman
 ### Disable ssh login for root user
 1. `$ sudo nano /etc/ssh/sshd_config`. Find the PermitRootLogin line and edit it to no.
 2. `$ sudo service ssh restart`.
+**Source: Udacity Lessons**
 
 ### Configure the Uncomplicated Firewall (UFW)
 1. Change allowed incoming connections for SSH (port 2200), HTTP (port 80), and NTP (port 123).
@@ -69,16 +78,19 @@ $ sudo ufw allow 80/tcp.
 $ sudo ufw allow 123/udp.
 $ sudo ufw enable.
 ```
+**Source: Udacity Lessons**
 
 ### Configure cron scripts to automatically manage package updates
 1. Install unattended-upgrades if not already installed: `$ sudo apt-get install unattended-upgrades`.
 2. To enable it, do: `$ sudo dpkg-reconfigure --priority=low unattended-upgrades`.
+**Source: rrjoson's README.md**
 
 ### Install Apache, mod_wsgi
 1. `$ sudo apt-get install apache2`.
 2. Install mod_wsgi with the following command: `$ sudo apt-get install libapache2-mod-wsgi python-dev`.
 3. Enable mod_wsgi: `$ sudo a2enmod wsgi`.
 4. `$ sudo service apache2 start`.
+**Sources: Udacity Lessons and iliketomatoes' README.md**
 
 ### Clone the Catalog app from Github
 1. `$ cd /var/www`. Then: `$ sudo mkdir catalog.`
@@ -93,6 +105,7 @@ sys.path.insert(0, "/var/www/catalog/")
 
 from catalog import app as application
 ```
+**Source: iliketomatoes' README.md**
 
 ### Install virtual environment, Flask and the project's dependencies
 
@@ -138,6 +151,7 @@ from catalog import app as application
 </VirtualHost>
 ```
 3. Enable the new virtual host: `$ sudo a2ensite catalog`.
+**Source: iliketomatoes' README.md**
 
 ### Install and configure PostgreSQL
 
@@ -161,6 +175,7 @@ local   all             all                                     peer
 host    all             all             127.0.0.1/32            md5
 host    all             all             ::1/128                 md5
 ```
+**Source: iliketomatoes' README.md**
 
 ### Update OAuth authorized JavaScript origins
 1. To let users correctly log-in change the authorized URI to 13.59.199.35 on the Google developer console.
